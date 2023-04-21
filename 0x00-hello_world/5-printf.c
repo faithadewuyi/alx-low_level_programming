@@ -1,6 +1,7 @@
 #include <stdio.h>
 /**
- * main - Entry point
+ * main - 5-printf.c
+ * description - Write a C program that prints exactly with proper grammar,
  *
  * Return: Always 0 (Success)
  */
