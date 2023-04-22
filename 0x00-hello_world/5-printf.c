@@ -1,12 +1,21 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
 /**
- * main - 5-printf.c
- * description - Write a C program thst prints exactly with proper grammar,
+ * main - Entry point
  *
  * Return: Always 0 (Success)
  */
+
 int main(void)
 {
-	printf("with a proper grammar, but the outcome is a piece of art,\n");
-	return (0);
+        int num;
+
+        for (num = 0; num < 10; num++)
+                printf("%d", num);
+
+        printf("\n");
+
+        return (0);
 }
