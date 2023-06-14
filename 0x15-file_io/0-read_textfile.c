@@ -1,56 +1,39 @@
 #include "main.h"
-#include <stdlib.h>
+#include <fcntl.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 /**
- * read_textfile- function to read text file to print to STDOUT.
- * @filename: text file being
- * @letters: input number of letters
- * Return: w- actual number of bytes read and printed
+ * read_textfile - reads a text file and prints the letters
+ * @filename: filename.
+ * @letters: numbers of letters printed.
+ *
+ * Return: numbers of letters printed. It fails, returns 0.
  */
-ssize_t read_textfile(const char *filename, size_t letters)
+size_t read_textfile(const char *filename, size_t letters)
 {
+	int fd;
+	size_t nrd, nwr;
+	char *buf;
 
-if (filename == NULL)
+	if (!filename)
+		return (0);
 
-{
-return (0);
-}
+	fd = open(filename, O_RDONLY);
 
-int fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		return (0);
 
-if (fd == -1)
-{
-return (0);
-}
+	buf = malloc(sizeof(char) * (letters));
+	if (!buf)
+		return (0);
 
-char *buffer = (char *)malloc((letters + 1) * sizeof(char));
+	nrd = read(fd, buf, letters);
+	nwr = write(STDOUT_FILENO, buf, nrd);
 
-if (buffer == NULL)
-{
-close(fd);
-return (0);
-}
+	close(fd);
 
-ssize_t bytesRead = read(fd, buffer, letters);
+	free(buf);
 
-if (bytesRead == -1)
-{
-close(fd);
-free(buffer);
-return (0);
-}
-
-buffer[bytesRead] = '\0';
-
-ssize_t bytesWritten = write(STDOUT_FILENO, buffer, bytesRead);
-close(fd);
-free(buffer);
-
-if (bytesWritten != bytesRead)
-{
-return (0);
-}
-
-return (bytesWritten);
+	return (nwr);
 }
