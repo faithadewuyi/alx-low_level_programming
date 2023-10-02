@@ -18,7 +18,7 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident);
 void close_elf(int elf);
 
 /**
- * check_elf - Function that pomps an ELF file.
+ * check_elf - Function that checks an ELF file.
  * @e_ident: A pointer to an array.
  *
  * Description: If the file is not an ELF file - exit code 98.
@@ -41,10 +41,10 @@ void check_elf(unsigned char *e_ident)
 }
 
 /**
- * print_magic - Function that magic numbers of an ELF header.
+ * print_magic - Prints the ELF header.
  * @e_ident: A pointer to an array containing the ELF magic numbers.
  *
- * Description: Separated by spaces.
+ * Description: Magic numbers are separated by spaces.
  */
 void print_magic(unsigned char *e_ident)
 {
@@ -64,7 +64,7 @@ void print_magic(unsigned char *e_ident)
 }
 
 /**
- * print_class - Prints ELF header.
+ * print_class - Prints class of an ELF header.
  * @e_ident: A pointer to an array containing the ELF class.
  */
 void print_class(unsigned char *e_ident)
@@ -88,7 +88,7 @@ void print_class(unsigned char *e_ident)
 }
 
 /**
- * print_data - Data of an ELF header.
+ * print_data - Prints data of an ELF header.
  * @e_ident: A pointer to an array containing the ELF class.
  */
 void print_data(unsigned char *e_ident)
@@ -113,9 +113,9 @@ void print_data(unsigned char *e_ident)
 
 /**
  *  * print_version - Prints the version of an ELF header.
- *    @e_ident: A pointer to an array containing the ELF version.
- **/
-void print_version(unsigned char e_ident)
+ *   * @e_ident: A pointer to an array containing the ELF version.
+ */
+void print_version(unsigned char *e_ident)
 {
 	 printf(" Version: %d",
 			  e_ident[EI_VERSION]);
@@ -132,7 +132,7 @@ void print_version(unsigned char e_ident)
 }
 
 /**
- * print_osabi - Prints the OS/ABI of an ELF header.
+ * print_osabi - Prints ABI of an ELF header.
  * @e_ident: A pointer to an array containing the ELF version.
  */
 void print_osabi(unsigned char *e_ident)
@@ -221,8 +221,8 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 }
 
 /**
- * print_entry - Prints the entry point of an ELF header.
- * @e_entry: The address of the ELF entry point.
+ * print_entry - Entry point of an ELF header.
+ * @e_entry: The of the ELF entry point.
  * @e_ident: A pointer to an array containing the ELF class.
  */
 void print_entry(unsigned long int e_entry, unsigned char *e_ident)
